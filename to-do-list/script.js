@@ -23,12 +23,13 @@ const addTask = () => {
 	newCheckbox.setAttribute("type", "checkbox");
 	newCheckbox.addEventListener("change", crossOut);
 
-	newTask.innerHTML = taskInput.value;
+	newTask.textContent = taskInput.value;
 	taskList.appendChild(newListItem);
 	newListItem.appendChild(newCheckbox);
 	newListItem.appendChild(newTask);
 
 	updateTaskCount();
+	taskInput.value = "";
 };
 
 // Update task total counter
