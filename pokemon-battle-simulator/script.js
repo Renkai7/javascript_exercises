@@ -23,7 +23,7 @@ const battleTurn = (playerPokemon, enemyPokemon) => {
 // Inflict damage to enemy based on attack power
 const performAttack = (attacker, defender) => {
 	const damage = calculateDamage(attacker);
-	defender.hp = defender.hp - damage;
+	defender.hp = Math.max(defender.hp - damage, 0); // Prevent HP from going below 0
 	console.log(
 		`${attacker.name} attacks ${defender.name} for ${damage} damage!`
 	);
@@ -38,13 +38,7 @@ const calculateDamage = (pokemon) => {
 };
 
 // Determine if battle ends
-const isBattleOver = (defender) => {
-	if (defender.hp <= 0) {
-		return true;
-	} else {
-		return false;
-	}
-};
+const isBattleOver = (defender) => defender.hp <= 0;
 
 // Display results of battle
 const displayBattleResults = (attacker, defender) => {
