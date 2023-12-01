@@ -11,8 +11,17 @@ function Pokemon(name, type, hp, attack, level) {
 const pikachu = new Pokemon("Pikachu", "Electric", 150, 90, 5);
 const charmander = new Pokemon("Charmander", "Fire", 130, 110, 5);
 
+// Battle Turn
+const battleTurn = () => {
+	// 1. Determine who is attacking and who is defending
+	// 2. Perform attack
+	// 3. Determine if battle is over
+	// 4. Display results of battle (showcase if player or enemy pokemon won)
+	// 5. Add experience gain at end if battle is won
+};
+
 // Inflict damage to enemy based on attack power
-const battleTurn = (playerPokemon, enemyPokemon) => {
+const performAttack = (playerPokemon, enemyPokemon) => {
 	const damage = calculateDamage(playerPokemon);
 	enemyPokemon.hp = enemyPokemon.hp - damage;
 	console.log(
@@ -27,8 +36,3 @@ const calculateDamage = (pokemon) => {
 	);
 	return damageFormula;
 };
-
-battleTurn(pikachu, charmander);
-battleTurn(pikachu, charmander);
-
-console.log(charmander.hp);
