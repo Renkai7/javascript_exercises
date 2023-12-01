@@ -9,23 +9,23 @@ function Pokemon(name, type, hp, attack, level) {
 
 // Create Pokemon
 const pikachu = new Pokemon("Pikachu", "Electric", 150, 90, 5);
-const charmander = new Pokemon("Charmander", "Fire", 130, 110, 5);
+const charmander = new Pokemon("Charmander", "Fire", 8, 110, 5);
 
-// Battle Turn
-const battleTurn = () => {
-	// 1. Determine who is attacking and who is defending
-	// 2. Perform attack
-	// 3. Determine if battle is over
-	// 4. Display results of battle (showcase if player or enemy pokemon won)
-	// 5. Add experience gain at end if battle is won
+// Iniates combat
+const battleTurn = (playerPokemon, enemyPokemon) => {
+	performAttack(playerPokemon, enemyPokemon);
+
+	if (isBattleOver(enemyPokemon)) {
+		displayBattleResults(playerPokemon, enemyPokemon);
+	}
 };
 
 // Inflict damage to enemy based on attack power
-const performAttack = (playerPokemon, enemyPokemon) => {
-	const damage = calculateDamage(playerPokemon);
-	enemyPokemon.hp = enemyPokemon.hp - damage;
+const performAttack = (attacker, defender) => {
+	const damage = calculateDamage(attacker);
+	defender.hp = defender.hp - damage;
 	console.log(
-		`${playerPokemon.name} attacks ${enemyPokemon.name} for ${damage} damage!`
+		`${attacker.name} attacks ${defender.name} for ${damage} damage!`
 	);
 };
 
@@ -36,3 +36,19 @@ const calculateDamage = (pokemon) => {
 	);
 	return damageFormula;
 };
+
+// Determine if battle ends
+const isBattleOver = (defender) => {
+	if (defender.hp <= 0) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
+// Display results of battle
+const displayBattleResults = (attacker, defender) => {
+	console.log(`${attacker.name} has defeated ${defender.name}!`);
+};
+
+battleTurn(pikachu, charmander);
