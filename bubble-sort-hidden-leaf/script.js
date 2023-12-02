@@ -5,6 +5,7 @@
  */
 
 const bubbleSort = (ninjas) => {
+	const sortedNinjas = [...ninjas]; // Create a copy to avoid modifying original array
 	let swapped = true;
 
 	while (swapped) {
@@ -19,7 +20,7 @@ const bubbleSort = (ninjas) => {
 		}
 	}
 
-	return ninjas;
+	return sortedNinjas;
 };
 
 const hiddenLeafNinjas = [
@@ -37,3 +38,4 @@ const hiddenLeafNinjas = [
 const sortedHiddenLeafNinja = bubbleSort(hiddenLeafNinjas);
 console.log(hiddenLeafNinjas);
 console.log(sortedHiddenLeafNinja);
+console.log(hiddenLeafNinjas);
