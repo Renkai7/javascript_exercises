@@ -10,12 +10,14 @@ const bubbleSort = (ninjas) => {
 
 	while (swapped) {
 		swapped = false;
-		for (let i = 0; i < ninjas.length - 1; i++) {
-			if (ninjas[i] > ninjas[i + 1]) {
-				let temp = ninjas[i];
-				ninjas[i] = ninjas[i + 1];
-				ninjas[i + 1] = temp;
-				swapped = true;
+		for (let j = 0; j < ninjas.length; j++) {
+			for (let i = 0; i < ninjas.length - 1 - j; i++) {
+				if (ninjas[i] > ninjas[i + 1]) {
+					const temp = ninjas[i];
+					ninjas[i] = ninjas[i + 1];
+					ninjas[i + 1] = temp;
+					swapped = true;
+				}
 			}
 		}
 	}
