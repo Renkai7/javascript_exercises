@@ -53,3 +53,8 @@ const evenNumber = numArray.filter((num) => {
 console.log("Even numbers: ", evenNumber);
 
 // Filter for names starting with 'A'
+const namesStartingWithLetterA = names.filter((name) => {
+	return name.startsWith("A");
+});
+
+console.log("Names start with 'A': ", namesStartingWithLetterA);
