@@ -84,3 +84,10 @@ const concatenateWithPrefix = names.map((name) => {
 });
 
 console.log("Concatenate string: ", concatenateWithPrefix);
+
+// Extract first character
+const extractFirstCharacter = names.map((name) => {
+	return `${name}: ${name.charAt(0)}`;
+});
+
+console.log("First character: ", extractFirstCharacter);
