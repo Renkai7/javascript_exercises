@@ -8,4 +8,8 @@ const doubleArray = numArray.map((num) => {
 console.log("Double numbers: ", doubleArray);
 
 // Square the numbers of Array elements
-const 
+const squareArray = numArray.map((num) => {
+	return num * num;
+});
+
+console.log("Square numbers: ", squareArray);
