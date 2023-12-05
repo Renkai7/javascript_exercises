@@ -1,8 +1,22 @@
 const numArray = [5, 2, 8, 5, 9, 3, 6, 2, 1, 4];
 const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+const names = [
+	"Alice",
+	"Bob",
+	"Charlie",
+	"David",
+	"Eve",
+	"Frank",
+	"Grace",
+	"Helen",
+	"Isaac",
+	"Jack",
+];
 
 console.log("Original letter array: ", letters);
 console.log("Original number array: ", numArray);
+console.log("Original name array: ", names);
+
 // Double the numbers of Array elements
 const doubleArray = numArray.map((num) => {
 	return num * 2;
@@ -30,3 +44,12 @@ const uppercaseLetters = letters.map((letter) => {
 });
 
 console.log("Uppercase letters: ", uppercaseLetters);
+
+// Filter for even numbers
+const evenNumber = numArray.filter((num) => {
+	return num % 2 === 0;
+});
+
+console.log("Even numbers: ", evenNumber);
+
+// Filter for names starting with 'A'
