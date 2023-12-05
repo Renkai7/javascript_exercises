@@ -91,3 +91,10 @@ const extractFirstCharacter = names.map((name) => {
 });
 
 console.log("First character: ", extractFirstCharacter);
+
+// Sum of array
+const sumOfArray = numArray.reduce((accumulator, num) => {
+	return accumulator + num;
+}, 0);
+
+console.log("Sum of Array: ", sumOfArray);
