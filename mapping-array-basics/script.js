@@ -24,4 +24,9 @@ const add10ToArray = numArray.map((num) => {
 
 console.log("Add 10 to numbers: ", add10ToArray);
 
-// Convert to
+// Convert to Uppercase
+const uppercaseLetters = letters.map((letter) => {
+	return letter.toUpperCase();
+});
+
+console.log("Uppercase letters: ", uppercaseLetters);
