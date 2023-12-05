@@ -76,3 +76,11 @@ const reverseString = names.map((name) => {
 });
 
 console.log("Reverse string: ", reverseString);
+
+// Conatenate with prefix
+const prefix = "Cpt. ";
+const concatenateWithPrefix = names.map((name) => {
+	return prefix + name;
+});
+
+console.log("Concatenate string: ", concatenateWithPrefix);
