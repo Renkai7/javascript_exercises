@@ -65,3 +65,14 @@ const lengthOfString = names.map((name) => {
 });
 
 console.log("Length of string: ", lengthOfString);
+
+// Reverse string
+const reverseString = names.map((name) => {
+	let reversedWord = "";
+	for (let i = name.length - 1; i >= 0; i--) {
+		reversedWord += name[i];
+	}
+	return reversedWord;
+});
+
+console.log("Reverse string: ", reverseString);
