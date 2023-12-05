@@ -58,3 +58,10 @@ const namesStartingWithLetterA = names.filter((name) => {
 });
 
 console.log("Names start with 'A': ", namesStartingWithLetterA);
+
+// Calculate length of string
+const lengthOfString = names.map((name) => {
+	return `${name}: ${name.length}`;
+});
+
+console.log("Length of string: ", lengthOfString);
