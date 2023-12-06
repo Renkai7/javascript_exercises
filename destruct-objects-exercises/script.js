@@ -78,3 +78,25 @@ const vehicle = {
 
 const { brand, model, ...moreCareInfo } = vehicle;
 console.log(brand, model, moreCareInfo); // Output: Toyota Corolla Object { year: 2020, color: "blue", fuelType: "petrol" }
+
+// DestructuringFunction Return Values
+function getUser() {
+	return {
+		id: 1,
+		username: "johndoe",
+		email: "john@example.com",
+	};
+}
+
+const { username, email: userEmail } = getUser();
+console.log(username, userEmail); // Output: johndoe john@example.com
+
+// Destructuring Array Contained in an Object
+const classroom = {
+	teacher: "Mrs. Smith",
+	students: ["John", "Jane", "Joe", "Jill"],
+};
+
+const { students } = classroom;
+const [firstStudent, secondStudent] = students;
+console.log(firstStudent, secondStudent);
