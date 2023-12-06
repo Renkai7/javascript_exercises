@@ -37,8 +37,8 @@ const gadget = {
 	price: 299,
 };
 
-const { name: gadgetName, price: stock = 10 } = gadget;
-console.log(gadgetName, stock); // Output: Smartphone 299
+const { name: gadgetName, stock = 10 } = gadget;
+console.log(gadgetName, stock); // Output: Smartphone 10
 
 // Function Parameter Destructuring
 const rectangle = {
@@ -46,13 +46,11 @@ const rectangle = {
 	height: 10,
 };
 
-const { width, height } = rectangle;
-
-const calculateArea = (width, height) => {
+const calculateArea = ({ width, height }) => {
 	return width * height;
 };
 
-console.log(calculateArea(width, height)); // Output: 200
+console.log(calculateArea(rectangle)); // Output: 200
 
 // Destructuring in Loops
 const users = [
@@ -61,11 +59,9 @@ const users = [
 	{ id: 3, name: "Charlie" },
 ];
 
-const getNames = users.map((user) => {
-	return user.name;
-});
-
-console.log(getNames); // Output: [ "Alice", "Bob", "Charlie" ]
+for (const { name } of users) {
+	console.log(name);
+} // Output: Alice, Bob, Charlie
 
 // Rest Operator with Destructuring
 const vehicle = {
@@ -97,6 +93,13 @@ const classroom = {
 	students: ["John", "Jane", "Joe", "Jill"],
 };
 
-const { students } = classroom;
-const [firstStudent, secondStudent] = students;
-console.log(firstStudent, secondStudent);
+const {
+	students: [firstStudent, secondStudent],
+} = classroom;
+
+console.log(firstStudent, secondStudent); // Output: John Jane
+
+// Skipping Elements in Array Destructuring
+const fibNumbers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
+const [, , , , fifthNumber] = fibNumbers;
+console.log(fifthNumber); // Output: 3
