@@ -52,4 +52,17 @@ const calculateArea = (width, height) => {
 	return width * height;
 };
 
-console.log(calculateArea(width, height));
+console.log(calculateArea(width, height)); // Output: 200
+
+// Destructuring in Loops
+const users = [
+	{ id: 1, name: "Alice" },
+	{ id: 2, name: "Bob" },
+	{ id: 3, name: "Charlie" },
+];
+
+const getNames = users.map((user) => {
+	return user.name;
+});
+
+console.log(getNames);
