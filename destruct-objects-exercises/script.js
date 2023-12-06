@@ -30,3 +30,12 @@ const user = {
 
 const { email, address } = user.details;
 console.log(email, address); // Output: john@example.com 123 Main St
+
+// Destructuring with Default Values
+const gadget = {
+	name: "Smartphone",
+	price: 299,
+};
+
+const { name: gadgetName, price: stock = 10 } = gadget;
+console.log(gadgetName, stock); // Output: Smartphone 299
