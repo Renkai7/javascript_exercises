@@ -65,4 +65,16 @@ const getNames = users.map((user) => {
 	return user.name;
 });
 
-console.log(getNames);
+console.log(getNames); // Output: [ "Alice", "Bob", "Charlie" ]
+
+// Rest Operator with Destructuring
+const vehicle = {
+	brand: "Toyota",
+	model: "Corolla",
+	year: 2020,
+	color: "blue",
+	fuelType: "petrol",
+};
+
+const { brand, model, ...moreCareInfo } = vehicle;
+console.log(brand, model, moreCareInfo); // Output: Toyota Corolla Object { year: 2020, color: "blue", fuelType: "petrol" }
