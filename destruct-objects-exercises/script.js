@@ -39,3 +39,17 @@ const gadget = {
 
 const { name: gadgetName, price: stock = 10 } = gadget;
 console.log(gadgetName, stock); // Output: Smartphone 299
+
+// Function Parameter Destructuring
+const rectangle = {
+	width: 20,
+	height: 10,
+};
+
+const { width, height } = rectangle;
+
+const calculateArea = (width, height) => {
+	return width * height;
+};
+
+console.log(calculateArea(width, height));
