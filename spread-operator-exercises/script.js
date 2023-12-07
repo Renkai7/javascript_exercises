@@ -47,3 +47,9 @@ console.log(obj3);
 let person = { name: "John", age: 30 };
 const copyPerson = { ...person };
 console.log(copyPerson);
+
+// Overidding Object Properties
+let original = { a: 1, b: 2 };
+let update = { b: 3, c: 4 };
+original = { ...update };
+console.log(original);
