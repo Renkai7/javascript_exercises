@@ -36,3 +36,9 @@ const newNumberArray = [
 	...numbers.slice(1),
 ];
 console.log(newNumberArray);
+
+// Spread Objects to Merge Properties
+let obj1 = { a: 1, b: 2 };
+let obj2 = { c: 3, d: 4 };
+const obj3 = { ...obj1, ...obj2 };
+console.log(obj3);
