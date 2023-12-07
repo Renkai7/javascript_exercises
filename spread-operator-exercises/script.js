@@ -25,4 +25,14 @@ let nums1 = [1, 2];
 let nums2 = [3, 4];
 let nums3 = [5, 6];
 let allNums = [...nums1, ...nums2, ...nums3];
-console.log(allNums);
+console.log(...allNums);
+
+// Inserting Elements in the Middle of an Array
+let numbers = [1, 4, 5];
+const newNumbers = [2, 3];
+const newNumberArray = [
+	...numbers.slice(0, 1),
+	...newNumbers,
+	...numbers.slice(1),
+];
+console.log(newNumberArray);
