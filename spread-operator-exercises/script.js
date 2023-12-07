@@ -25,7 +25,7 @@ let nums1 = [1, 2];
 let nums2 = [3, 4];
 let nums3 = [5, 6];
 let allNums = [...nums1, ...nums2, ...nums3];
-console.log(...allNums);
+console.log("all nums", allNums);
 
 // Inserting Elements in the Middle of an Array
 let numbers = [1, 4, 5];
@@ -51,7 +51,7 @@ console.log(copyPerson);
 // Overidding Object Properties
 let original = { a: 1, b: 2 };
 let update = { b: 3, c: 4 };
-original = { ...update };
+original = { ...original, ...update };
 console.log(original);
 
 // Combining Array Inside an Object
