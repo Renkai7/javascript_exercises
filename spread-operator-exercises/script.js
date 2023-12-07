@@ -14,3 +14,8 @@ let fruits = ["apple", "banana"];
 let vegetables = ["carrot", "beetroot"];
 const fruitsAndVegetables = [...fruits, ...vegetables, "orange", "potato"];
 console.log(fruitsAndVegetables);
+
+// Expanding Strings into Arrays
+let greeting = "hello";
+const greetingArray = [...greeting];
+console.log(greetingArray);
