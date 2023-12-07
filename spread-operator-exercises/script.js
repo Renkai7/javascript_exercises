@@ -53,3 +53,11 @@ let original = { a: 1, b: 2 };
 let update = { b: 3, c: 4 };
 original = { ...update };
 console.log(original);
+
+// Combining Array Inside an Object
+let state = {
+	fruits: ["apple", "banana"],
+	vegetables: ["carrot", "beetroot"],
+};
+const newState = { food: [...state.fruits, ...state.vegetables] };
+console.log(newState);
