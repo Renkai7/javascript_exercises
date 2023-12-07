@@ -8,3 +8,9 @@ console.log(array3);
 let originalArray = ["a", "b", "c"];
 const copiedArray = [...originalArray];
 console.log(copiedArray);
+
+// Merging Arrays with Additional Elements
+let fruits = ["apple", "banana"];
+let vegetables = ["carrot", "beetroot"];
+const fruitsAndVegetables = [...fruits, ...vegetables, "orange", "potato"];
+console.log(fruitsAndVegetables);
