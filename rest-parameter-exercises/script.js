@@ -37,3 +37,12 @@ const playerInfo = ({ name, age }) => {
 	return `${name} ${age}`;
 };
 console.log(playerInfo(person));
+
+// Nested Destructuring
+const user = {
+	id: 1,
+	name: "John",
+	address: { city: "New York", country: "USA" },
+};
+const { city, country } = user.address;
+console.log(city, country);
