@@ -25,3 +25,9 @@ console.log(apple, banana, otherFruits);
 const person = { name: "Alice", age: 30, job: "Developer" };
 const { name, age, ...otherInfo } = person;
 console.log(name, age, otherInfo);
+
+// Swapping Variables using Destructuring
+let a = 2;
+let b = 4;
+[b, a] = [a, b];
+console.log(a, b);
