@@ -44,7 +44,9 @@ const user = {
 	name: "John",
 	address: { city: "New York", country: "USA" },
 };
-const { city, country } = user.address;
+const {
+	address: { city, country },
+} = user;
 console.log(city, country);
 
 // Rest Parameters in Array Methods
