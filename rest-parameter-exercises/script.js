@@ -15,3 +15,8 @@ const greet = (firstName, lastName, ...titles) => {
 };
 
 console.log(greet("Ren", "Tsukino", "Phantom Thief", "Student", "Brewer"));
+
+// Destructuring an Array
+const fruits = ["Apple", "Banana", "Cherry", "Dates"];
+const [apple, banana, ...otherFruits] = fruits;
+console.log(apple, banana, otherFruits);
