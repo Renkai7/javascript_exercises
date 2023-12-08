@@ -46,3 +46,9 @@ const user = {
 };
 const { city, country } = user.address;
 console.log(city, country);
+
+// Rest Parameters in Array Methods
+const combineArray = (...arr) => {
+	return [arr];
+};
+console.log(combineArray(1, 2, 3, 4));
