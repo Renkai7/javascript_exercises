@@ -31,3 +31,9 @@ let a = 2;
 let b = 4;
 [b, a] = [a, b];
 console.log(a, b);
+
+// Function with Destructured Object Parameters
+const playerInfo = ({ name, age }) => {
+	return `${name} ${age}`;
+};
+console.log(playerInfo(person));
