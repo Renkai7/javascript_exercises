@@ -20,3 +20,8 @@ console.log(greet("Ren", "Tsukino", "Phantom Thief", "Student", "Brewer"));
 const fruits = ["Apple", "Banana", "Cherry", "Dates"];
 const [apple, banana, ...otherFruits] = fruits;
 console.log(apple, banana, otherFruits);
+
+// Destructure an Object
+const person = { name: "Alice", age: 30, job: "Developer" };
+const { name, age, ...otherInfo } = person;
+console.log(name, age, otherInfo);
