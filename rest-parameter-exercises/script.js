@@ -58,7 +58,7 @@ console.log(combineArray(1, 2, 3, 4));
 // Default Values with Destructuring
 const scores = [10, 20];
 const [numOne = scores[0], numTwo = scores[1], numThree = 3] = scores;
-
+console.log(numOne, numTwo, numThree);
 // Complex Destructuring
 const student = { name: "Emily", age: 22, scores: { maths: 74, english: 63 } };
 const getStudentNameAndGrade = ({ name, scores }) => {
