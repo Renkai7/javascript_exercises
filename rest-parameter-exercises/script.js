@@ -8,3 +8,10 @@ const sum = (...numbers) => {
 };
 
 console.log(sum(1, 2, 3));
+
+// Combining Rest Parameters with Regular Parameters
+const greet = (firstName, lastName, ...titles) => {
+	return `${firstName} ${lastName} ${titles}`;
+};
+
+console.log(greet("Ren", "Tsukino", "Phantom Thief", "Student", "Brewer"));
