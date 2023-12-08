@@ -51,7 +51,7 @@ console.log(city, country);
 
 // Rest Parameters in Array Methods
 const combineArray = (...arr) => {
-	return [arr];
+	return [].concat(...arr);
 };
 console.log(combineArray(1, 2, 3, 4));
 
