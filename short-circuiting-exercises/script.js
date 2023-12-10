@@ -42,3 +42,14 @@ const performAction = () => {
 if (a || b) {
 	c && performAction();
 }
+
+// Practical Usage in Event Handling
+const isUserLoggedIn = () => {
+	return true;
+};
+
+const handleButtonClick = () => {
+	console.log("Button clicked!");
+};
+
+isUserLoggedIn() && handleButtonClick();
