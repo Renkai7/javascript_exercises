@@ -16,7 +16,7 @@ const getDefaultUsername = () => {
 
 let username = "";
 
-username || getDefaultUsername();
+username = username || getDefaultUsername();
 console.log(username);
 
 // Combining AND and OR
