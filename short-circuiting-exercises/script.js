@@ -29,3 +29,16 @@ if ((isAuthenticated && !hasError) || isAdmin) {
 } else {
 	console.log("Access...DENIED!");
 }
+
+// Nested Short-Circuiting
+let a = true;
+let b = false;
+let c = true;
+
+const performAction = () => {
+	console.log("Perform action");
+};
+
+if (a || b) {
+	c && performAction();
+}
