@@ -130,3 +130,14 @@ const sumOfOddsValues = values.reduce((acc, num) => {
 }, 0);
 const avgOfOdds = sumOfOddsValues / values.length;
 console.log("Average of odds ", avgOfOdds);
+
+// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+//       Odd of victory Bayern Munich: 1.33
+//       Odd of draw: 3.25
+//       Odd of victory Borrussia Dortmund: 6.5
+// Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+console.log("Exercise 3:");
+const entries = Object.entries(game.odds);
+for (const [key, value] of entries) {
+	console.log(`Odd of victory ${game[key] ?? "draw"}: ${value}`);
+}
