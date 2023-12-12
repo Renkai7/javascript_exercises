@@ -121,3 +121,12 @@ console.log("///////////////////////////////////////// Coding Challenge #2");
 console.log("Exercise 1:");
 for (const player of game.scored.entries())
 	console.log(`Goal ${player[0] + 1}: ${player[1]}`);
+
+// 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+console.log("Exercise 2:");
+const values = Object.values(game.odds);
+const sumOfOddsValues = values.reduce((acc, num) => {
+	return acc + num;
+}, 0);
+const avgOfOdds = sumOfOddsValues / values.length;
+console.log("Average of odds ", avgOfOdds);
