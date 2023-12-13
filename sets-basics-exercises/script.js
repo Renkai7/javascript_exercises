@@ -42,9 +42,25 @@ const setY = new Set(["art", "math", "biology"]);
 
 const differencesOfSets = (setOne, setTwo) => {
 	const itemsNotInCommonSet = new Set();
-	for (const fruit of setOne) {
-		!setTwo.has(fruit) && itemsNotInCommonSet.add(fruit);
+	for (const item of setOne) {
+		!setTwo.has(item) && itemsNotInCommonSet.add(item);
 	}
 	return itemsNotInCommonSet;
 };
 console.log(differencesOfSets(setX, setY));
+
+// Symmetric Difference
+const setM = new Set(["piano", "violin", "guitar"]);
+const setN = new Set(["flute", "violin", "drums"]);
+
+const symmetricDifference = (setOne, setTwo) => {
+	const _differenceSet = new Set(setOne);
+	for (const elem of setTwo) {
+		_differenceSet.has(elem)
+			? _differenceSet.delete(elem)
+			: _differenceSet.add(elem);
+	}
+	return _differenceSet;
+};
+
+console.log(symmetricDifference(setM, setN));
