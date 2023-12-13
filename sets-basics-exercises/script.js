@@ -21,3 +21,17 @@ const combineSets = (setOne, setTwo) => {
 	return mergedSet;
 };
 console.log(combineSets(setA, setB));
+
+// Intersection of Sets
+const set1 = new Set(["apple", "banana", "orange"]);
+const set2 = new Set(["banana", "berry", "apple"]);
+
+const intersectSets = (setOne, setTwo) => {
+	const fruitsInCommonSet = new Set();
+	for (const fruit of setOne) {
+		setTwo.has(fruit) && fruitsInCommonSet.add(fruit);
+	}
+	return fruitsInCommonSet;
+};
+
+console.log(intersectSets(set1, set2));
