@@ -35,3 +35,16 @@ const intersectSets = (setOne, setTwo) => {
 };
 
 console.log(intersectSets(set1, set2));
+
+// Difference of Sets
+const setX = new Set(["math", "science", "history"]);
+const setY = new Set(["art", "math", "biology"]);
+
+const differencesOfSets = (setOne, setTwo) => {
+	const itemsNotInCommonSet = new Set();
+	for (const fruit of setOne) {
+		!setTwo.has(fruit) && itemsNotInCommonSet.add(fruit);
+	}
+	return itemsNotInCommonSet;
+};
+console.log(differencesOfSets(setX, setY));
