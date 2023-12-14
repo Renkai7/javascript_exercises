@@ -27,3 +27,8 @@ console.log(students.size);
 let removeID = 3;
 students.delete(removeID);
 console.log(students.has(removeID));
+
+// Convert Map to Array
+// const arrStudents = [...students];
+const arrStudents = Array.from(students);
+console.log(arrStudents);
