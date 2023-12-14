@@ -118,3 +118,20 @@ console.log(iterateSet.size);
 for (const item of iterateSet) {
 	console.log(item);
 }
+
+// Converting Between Set and Array
+const arrayToConvert = ["dog", "cat", "rabbit"];
+const setToConvert = new Set(["html", "css", "javascript"]);
+
+const convertToSet = (arr) => {
+	const _convertedSet = new Set([...arr]);
+	return _convertedSet;
+};
+
+const convertToArray = (set) => {
+	const _convertedArray = [...set];
+	return _convertedArray;
+};
+
+console.log(convertToSet(arrayToConvert));
+console.log(convertToArray(setToConvert));
