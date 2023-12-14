@@ -198,3 +198,10 @@ const removeGameEvent = (gameEventMap, position) => {
 	return _updatedGameEvent;
 };
 console.log(removeGameEvent(gameEvents, 64));
+
+// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+console.log("Exercise 3:");
+const time = [...gameEvents.keys()].pop();
+console.log(
+	`An event happened, on average, every ${time / gameEvents.size} minutes.`
+);
