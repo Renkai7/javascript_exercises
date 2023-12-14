@@ -156,7 +156,8 @@ for (const player of game.scored) {
 }
 
 console.log(scorers);
-
+///////////////////////////////////////
+// Coding Challenge #3
 /* 
 Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
@@ -183,7 +184,17 @@ const gameEvents = new Map([
 	[92, "🔶 Yellow card"],
 ]);
 
+console.log("Coding Challenge 3:");
 // 1. Create an array 'events' of the different game events that happened (no duplicates)
 console.log("Exercise 1:");
 const gameEventsArr = new Set([...gameEvents.values()]);
 console.log(gameEventsArr);
+
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+console.log("Exercise 2:");
+const removeGameEvent = (gameEventMap, position) => {
+	const _updatedGameEvent = new Map(gameEventMap);
+	_updatedGameEvent.delete(position);
+	return _updatedGameEvent;
+};
+console.log(removeGameEvent(gameEvents, 64));
