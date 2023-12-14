@@ -111,3 +111,10 @@ const removeValueFromSet = (setWithData) => {
 };
 
 console.log(removeValueFromSet(clearSet));
+
+// Set Size and Iteration
+const iterateSet = new Set(["red", "green", "blue"]);
+console.log(iterateSet.size);
+for (const item of iterateSet) {
+	console.log(item);
+}
