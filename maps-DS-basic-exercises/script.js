@@ -24,7 +24,7 @@ for (const [studentId, student] of students.entries()) {
 console.log(students.size);
 
 // Deleting an Entry
-let removeID = 3;
+let removeID = 4;
 students.delete(removeID);
 console.log(students.has(removeID));
 
@@ -42,3 +42,16 @@ for (const entry of arrayData) {
 	teachers.set(entry[0], entry[1]);
 }
 console.log(teachers.get(6));
+
+// Filter a Map
+let gradeData = new Map([
+	[1, "A"],
+	[2, "B"],
+	[3, "A"],
+]);
+// Condition: Include only students with grade 'A'
+const highGradeStudents = new Map();
+for (const [gradeID, grade] of gradeData) {
+	grade === "A" && highGradeStudents.set(gradeID, students.get(gradeID));
+}
+console.log(highGradeStudents);
