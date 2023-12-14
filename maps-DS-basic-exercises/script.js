@@ -1,0 +1,8 @@
+// Creating and Populating a Map
+const students = new Map();
+students.set(1, "Alice");
+students.set(2, "Bob");
+students.set(3, "Charlie");
+students.set(4, "Mark");
+students.set(5, "Zack");
+students.set(6, "Cloud");
