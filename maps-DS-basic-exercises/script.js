@@ -10,3 +10,7 @@ students.set(6, "Cloud");
 // Retrieving values
 const studentID = 2;
 console.log(students.get(studentID));
+
+// Checking for a Key
+const checkID = 4;
+students.has(checkID) && console.log(`Student with ID: ${checkID} exists.`);
