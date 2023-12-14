@@ -19,3 +19,6 @@ students.has(checkID) && console.log(`Student with ID: ${checkID} exists.`);
 for (const [studentId, student] of students.entries()) {
 	console.log(`${studentId}: ${student}`);
 }
+
+// Size of a Map
+console.log(students.size);
