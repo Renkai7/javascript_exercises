@@ -22,3 +22,8 @@ for (const [studentId, student] of students.entries()) {
 
 // Size of a Map
 console.log(students.size);
+
+// Deleting an Entry
+let removeID = 3;
+students.delete(removeID);
+console.log(students.has(removeID));
