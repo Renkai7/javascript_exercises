@@ -98,3 +98,16 @@ const superSetCheck = (main, sub) => {
 	return true;
 };
 superSetCheck(superSet, anotherSet);
+
+// Clearing a Set
+const clearSet = new Set(["sun", "moon", "stars"]);
+
+const removeValueFromSet = (setWithData) => {
+	const _clearedSet = new Set(setWithData);
+	for (const item of _clearedSet) {
+		_clearedSet.delete(item);
+	}
+	return _clearedSet;
+};
+
+console.log(removeValueFromSet(clearSet));
