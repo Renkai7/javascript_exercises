@@ -6,3 +6,7 @@ students.set(3, "Charlie");
 students.set(4, "Mark");
 students.set(5, "Zack");
 students.set(6, "Cloud");
+
+// Retrieving values
+const studentID = 2;
+console.log(students.get(studentID));
