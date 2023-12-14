@@ -205,3 +205,12 @@ const time = [...gameEvents.keys()].pop();
 console.log(
 	`An event happened, on average, every ${time / gameEvents.size} minutes.`
 );
+
+// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+//   [FIRST HALF] 17: ⚽️ GOAL
+const halfTime = time / 2;
+for (const [time, event] of gameEvents.entries()) {
+	time < halfTime
+		? console.log(`[FIRST HALF] ${time}: ${event}`)
+		: console.log(`[SECOND HALF] ${time}: ${event}`);
+}
