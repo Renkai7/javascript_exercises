@@ -81,3 +81,20 @@ const subsetCheck = (main, sub) => {
 	return true;
 };
 subsetCheck(mainSet, subSet);
+
+// Superset Check
+const superSet = new Set([10, 20, 30, 40]);
+const anotherSet = new Set([30, 40]);
+
+const superSetCheck = (main, sub) => {
+	for (const item of sub) {
+		if (!main.has(item)) {
+			console.log("First set is not a superset of the second set");
+			return false;
+		}
+	}
+	console.log("First set is a superset of the second set");
+
+	return true;
+};
+superSetCheck(superSet, anotherSet);
