@@ -29,6 +29,16 @@ students.delete(removeID);
 console.log(students.has(removeID));
 
 // Convert Map to Array
-// const arrStudents = [...students];
-const arrStudents = Array.from(students);
+const arrStudents = [...students];
 console.log(arrStudents);
+
+// Convert Array to Map
+let arrayData = [
+	[6, "Frank"],
+	[7, "Grace"],
+];
+const teachers = new Map();
+for (const entry of arrayData) {
+	teachers.set(entry[0], entry[1]);
+}
+console.log(teachers.get(6));
