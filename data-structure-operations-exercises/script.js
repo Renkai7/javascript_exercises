@@ -182,3 +182,8 @@ const gameEvents = new Map([
 	[80, "⚽️ GOAL"],
 	[92, "🔶 Yellow card"],
 ]);
+
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+console.log("Exercise 1:");
+const gameEventsArr = new Set([...gameEvents.values()]);
+console.log(gameEventsArr);
