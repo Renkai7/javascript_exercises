@@ -14,3 +14,8 @@ console.log(students.get(studentID));
 // Checking for a Key
 const checkID = 4;
 students.has(checkID) && console.log(`Student with ID: ${checkID} exists.`);
+
+// Iterating Over a Map
+for (const [studentId, student] of students.entries()) {
+	console.log(`${studentId}: ${student}`);
+}
