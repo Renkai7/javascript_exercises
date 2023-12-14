@@ -64,3 +64,20 @@ const symmetricDifference = (setOne, setTwo) => {
 };
 
 console.log(symmetricDifference(setM, setN));
+
+// Subset Check
+const mainSet = new Set(["a", "b", "c", "d", "e"]);
+const subSet = new Set(["a", "b"]);
+
+const subsetCheck = (main, sub) => {
+	for (const item of sub) {
+		if (!main.has(item)) {
+			console.log("Second set is not a subset of the first set");
+			return false;
+		}
+	}
+	console.log("Second set is a subset of the first set");
+
+	return true;
+};
+subsetCheck(mainSet, subSet);
