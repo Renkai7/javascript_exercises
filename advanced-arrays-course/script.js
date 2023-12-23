@@ -217,3 +217,25 @@ const calcAverageHumanAge = (ages) => {
 };
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+///////////////////////////////////////
+// The Magic of Chaining Methods
+console.log("Magic of Chaining Methods");
+
+// Pipeline
+const totalDepositsUSD = movements
+	.filter((mov) => {
+		return mov > 0;
+	})
+	// .map((mov) => {
+	// 	return mov * euroToUsd;
+	// })
+	.map((mov, i, arr) => {
+		// console.log(arr);
+		return mov * euroToUsd;
+	})
+	.reduce((acc, mov) => {
+		return acc + mov;
+	}, 0);
+
+console.log(totalDepositsUSD);
