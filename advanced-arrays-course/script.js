@@ -148,3 +148,28 @@ const movementsDescriptions = movements.map((mov, i) => {
 });
 
 console.log(movementsDescriptions);
+
+///////////////////////////////////////
+// The filter Method
+const deposits = movements.filter((mov) => {
+	return mov > 0;
+});
+
+console.log(movements);
+console.log(deposits);
+
+const withdrawal = movements.filter((mov) => {
+	return mov < 0;
+});
+
+console.log(withdrawal);
+
+///////////////////////////////////////
+// The reduce Method
+console.log(movements);
+const balance = movements.reduce((acc, cur) => {
+	console.log(`Iteration ${i}: ${acc}`);
+	return acc + cur;
+}, 0);
+
+console.log(balance);
