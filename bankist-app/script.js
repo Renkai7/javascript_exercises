@@ -34,7 +34,7 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Elements
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
@@ -81,6 +81,14 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = (movements) => {
+	const balance = movements.reduce((acc, mov) => {
+		return acc + mov;
+	}, 0);
+	labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
 const createUsernames = (accs) => {
 	accs.forEach((acc) => {
 		acc.username = acc.owner
@@ -94,7 +102,7 @@ const createUsernames = (accs) => {
 };
 
 createUsernames(accounts);
-console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -104,7 +112,5 @@ const currencies = new Map([
 	["EUR", "Euro"],
 	["GBP", "Pound sterling"],
 ]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
