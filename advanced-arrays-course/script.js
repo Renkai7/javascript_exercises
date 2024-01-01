@@ -310,3 +310,130 @@ console.log(firstWithdrawal);
 
 const account = accounts.find((acc) => acc.owner === "Jessica Davis");
 console.log(account);
+
+///////////////////////////////////////
+// flat and flatMap
+const arrFlat = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// flat
+const overalBalance = accounts
+	.map((acc) => acc.movements)
+	.flat()
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+// flatMap
+const overalBalance2 = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2);
+
+///////////////////////////////////////
+// Sorting Arrays
+
+// Strings
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+console.log(movements);
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
+
+///////////////////////////////////////
+// More Ways of Creating and Filling Arrays
+const arrFill = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Emprty arrays + fill method
+const x = new Array(7);
+console.log(x);
+// console.log(x.map(() => 5));
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
+
+arrFill.fill(23, 2, 6);
+console.log(arrFill);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+///////////////////////////////////////
+// Array Methods Practice
+console.log("Array Methods Practice");
+
+// 1.
+const bankDepositSum = accounts
+	.flatMap((acc) => acc.movements)
+	.filter((mov) => mov > 0)
+	.reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
+
+// 2.
+// const numDeposits1000 = accounts
+// 	.flatMap((acc) => acc.movements)
+// 	.filter((mov) => mov >= 1000).length;
+
+const numDeposits1000 = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+console.log(numDeposits1000);
+
+// 3.
+const { sumDeposits, sumWithdrawals } = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce(
+		(sums, cur) => {
+			// cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+			sums[cur > 0 ? "sumDeposits" : "sumWithdrawals"] += cur;
+			return sums;
+		},
+		{ sumDeposits: 0, sumWithdrawals: 0 }
+	);
+console.log(sumDeposits, sumWithdrawals);
+
+// 4.
+const convertTitleCase = (title) => {
+	const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+	const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+	const titleCase = title
+		.toLowerCase()
+		.split(" ")
+		.map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+		.join(" ");
+	return capitalize(titleCase);
+};
+
+console.log(convertTitleCase("this is a nice title"));
+console.log(
+	convertTitleCase("and this is a nice title and so it the previous title!")
+);
