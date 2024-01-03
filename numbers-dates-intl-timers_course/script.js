@@ -136,3 +136,66 @@ console.log(BigInt(4838430248342043823408394839483204));
 // Operations
 console.log(10000n + 10000n);
 console.log(36286372637263726376237263726372632n * 10000000n);
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == "20");
+
+///////////////////////////////////////
+// Creating Dates
+
+// Create a date
+const now = new Date();
+console.log(now);
+
+console.log(new Date("December 24, 2015"));
+
+// Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+
+console.log(Date.now());
+
+///////////////////////////////////////
+// Internationalizing Numbers (Intl)
+const num = 3884764.23;
+
+const options = {
+	style: "currency",
+	unit: "celsius",
+	currency: "EUR",
+};
+
+console.log("US:      ", new Intl.NumberFormat("en-US", options).format(num));
+console.log("Germany: ", new Intl.NumberFormat("de-DE", options).format(num));
+console.log("Syria:   ", new Intl.NumberFormat("ar-SY", options).format(num));
+console.log(
+	navigator.language,
+	new Intl.NumberFormat(navigator.language, options).format(num)
+);
+
+///////////////////////////////////////
+// Timers
+const ingredients = ["olives", "spinach"];
+
+// setTimeout
+const pizzaTimer = setTimeout(
+	(ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+	3000,
+	...ingredients
+);
+console.log("Waiting...");
+
+if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
+
+// setInterval
+// setInterval(function () {
+// 	const now = new Date();
+// 	console.log(now);
+// }, 3000);
