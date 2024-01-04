@@ -38,26 +38,8 @@ document.addEventListener("keydown", function (e) {
 
 // Buttong scrolling
 btnScrollTo.addEventListener("click", (e) => {
-	const s1coords = section1.getBoundingClientRect();
-	console.log(s1coords);
+	// const s1coords = section1.getBoundingClientRect();
 
-	console.log(e.target.getBoundingClientRect());
-
-	console.log("Current scroll (X/Y)", window.scrollX, window.scrollY);
-
-	// Scrolling
-	// window.scrollTo(
-	// 	s1coords.left + window.scrollX,
-	// 	s1coords.top + window.scrollY
-	// );
-
-	// window.scrollTo({
-	// 	left: s1coords.left + window.scrollX,
-	// 	top: s1coords.top + window.scrollY,
-	// 	behavior: "smooth",
-	// });
-
-	// Modern way of smooth scrolling
 	section1.scrollIntoView({ behavior: "smooth" });
 });
 ///////////////////////////////////////
@@ -68,7 +50,6 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 
 	// Matching strategy
 	if (e.target.classList.contains("nav__link")) {
-		console.log("LINK");
 		const id = e.target.getAttribute("href");
 		document.querySelector(id).scrollIntoView({ behavior: "smooth" });
 	}
@@ -113,35 +94,13 @@ nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
 // Stick navigation
-// const intialCoords = section1.getBoundingClientRect();
-
-// window.addEventListener("scroll", function () {
-// 	console.log(window.scrollY);
-// 	if(this.window.scrollY > intialCoords.top) nav.classList.add("stick");
-// 	else
-// });
-
-// Stick navigation: Intersection Observer API
-// const obsCallback = (entries, observer) => {
-// 	entries.forEach((entry) => {
-// 		console.log(entry);
-// 	});
-// };
-
-// const obsOptions = {
-// 	root: null,
-// 	threshold: [0, 0.2],
-// };
-
-// const observer = new IntersectionObserver(obsCallback, obsOptions);
-// observer.observe(section1);
 
 const header = document.querySelector(".header");
 const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
 	const [entry] = entries;
-	console.log(entry);
+
 	if (!entry.isIntersecting) nav.classList.add("sticky");
 	else nav.classList.remove("sticky");
 };
@@ -154,26 +113,155 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 
 headerObserver.observe(header);
 
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
+// Reveal sections
+const allSections = document.querySelectorAll(".section");
+const revealSection = function (entries, observer) {
+	const [entry] = entries;
 
+	if (!entry.isIntersecting) return;
+	entry.target.classList.remove("section--hidden");
+	observer.unobserve(entry.target);
+};
+const sectionObserver = new IntersectionObserver(revealSection, {
+	root: null,
+	threshold: 0.15,
+});
+allSections.forEach(function (section) {
+	sectionObserver.observe(section);
+	// section.classList.add("section--hidden");
+});
+
+// Lazy loading images
+const imgTargets = document.querySelectorAll("img[data-src]");
+
+const loadImg = function (entries, observer) {
+	const [entry] = entries;
+	console.log(entry);
+
+	if (!entry.isIntersecting) return;
+
+	// Replace src with data-src
+	entry.target.src = entry.target.dataset.src;
+
+	entry.target.addEventListener("load", function () {
+		entry.target.classList.remove("lazy-img");
+	});
+
+	observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+	root: null,
+	threshold: 0,
+	rootMargin: "200px",
+});
+
+imgTargets.forEach((img) => imgObserver.observe(img));
+
+// Slider
+const slider = function () {
+	const slides = document.querySelectorAll(".slide");
+
+	const btnLeft = document.querySelector(".slider__btn--left");
+	const btnRight = document.querySelector(".slider__btn--right");
+	const dotContainer = document.querySelector(".dots");
+	let curSlide = 0;
+	const maxSlide = slides.length;
+
+	// Functions
+	const createDots = () => {
+		slides.forEach(function (_, i) {
+			dotContainer.insertAdjacentHTML(
+				"beforeend",
+				`<button class="dots__dot" data-slide="${i}"></button>`
+			);
+		});
+	};
+
+	const activateDot = function (slide) {
+		document
+			.querySelectorAll(".dots__dot")
+			.forEach((dot) => dot.classList.remove("dots__dot--active"));
+
+		document
+			.querySelector(`.dots__dot[data-slide="${slide}"]`)
+			.classList.add("dots__dot--active");
+	};
+
+	const goToSlide = (slide) => {
+		slides.forEach(
+			(s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+		);
+	};
+
+	// Next slide
+	const nextSlide = () => {
+		if (curSlide === maxSlide - 1) {
+			curSlide = 0;
+		} else {
+			curSlide++;
+		}
+
+		goToSlide(curSlide);
+		activateDot(curSlide);
+	};
+
+	const prevSlide = () => {
+		if (curSlide === 0) {
+			curSlide = maxSlide - 1;
+		} else {
+			curSlide--;
+		}
+		goToSlide(curSlide);
+		activateDot(curSlide);
+	};
+
+	const init = function () {
+		createDots();
+		activateDot(0);
+		goToSlide(0);
+	};
+	init();
+
+	// Event Handlers
+	btnRight.addEventListener("click", nextSlide);
+	btnLeft.addEventListener("click", prevSlide);
+
+	document.addEventListener("keydown", function (e) {
+		e.key === "ArrowLeft" && prevSlide();
+		e.key === "ArrowRight" && nextSlide();
+	});
+
+	dotContainer.addEventListener("click", function (e) {
+		if (e.target.classList.contains("dots__dot")) {
+			const { slide } = e.target.dataset;
+			goToSlide(slide);
+			activateDot(slide);
+		}
+	});
+};
+slider();
+
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+/*
 ///////////////////////////////////////
 // Selecting, Creating, and Deleting Elements
 // Selecting elements
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
 // const header = document.querySelector(".header");
-const allSections = document.querySelectorAll(".section");
-console.log(allSections);
+// const allSections = document.querySelectorAll(".section");
+// console.log(allSections);
 
 document.getElementById("section--1");
 const allButtons = document.getElementsByTagName("button");
-console.log(allButtons);
+// console.log(allButtons);
 
-console.log(document.getElementsByClassName("btn"));
+// console.log(document.getElementsByClassName("btn"));
 
 // Creating and inserting elements
 const message = document.createElement("div");
@@ -217,8 +305,8 @@ const logo = document.querySelector(".nav__logo");
 console.log(logo.alt);
 
 const link = document.querySelector(".nav__link--btn");
-console.log(link.href);
-console.log(link.getAttribute("href"));
+// console.log(link.href);
+// console.log(link.getAttribute("href"));
 
 // Data Attributes
 console.log(logo.dataset.versionNumber);
@@ -233,32 +321,32 @@ logo.classList.contains("c"); // not includes
 // logo.className = "jonas"
 
 // Smooth Scrolling
-// const btnScrollTo = document.querySelector(".btn--scroll-to");
-// const section1 = document.querySelector("#section--1");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
 
-// btnScrollTo.addEventListener("click", (e) => {
-// 	const s1coords = section1.getBoundingClientRect();
-// 	console.log(s1coords);
+btnScrollTo.addEventListener("click", (e) => {
+	const s1coords = section1.getBoundingClientRect();
+	console.log(s1coords);
 
 // 	console.log(e.target.getBoundingClientRect());
 
 // 	console.log("Current scroll (X/Y)", window.scrollX, window.scrollY);
 
-// 	// Scrolling
-// 	// window.scrollTo(
-// 	// 	s1coords.left + window.scrollX,
-// 	// 	s1coords.top + window.scrollY
-// 	// );
+// Scrolling
+window.scrollTo(
+	s1coords.left + window.scrollX,
+	s1coords.top + window.scrollY
+);
 
-// 	// window.scrollTo({
-// 	// 	left: s1coords.left + window.scrollX,
-// 	// 	top: s1coords.top + window.scrollY,
-// 	// 	behavior: "smooth",
-// 	// });
+window.scrollTo({
+	left: s1coords.left + window.scrollX,
+	top: s1coords.top + window.scrollY,
+	behavior: "smooth",
+});
 
-// 	// Modern way of smooth scrolling
-// 	section1.scrollIntoView({ behavior: "smooth" });
-// });
+// Modern way of smooth scrolling
+section1.scrollIntoView({ behavior: "smooth" });
+});
 
 ///////////////////////////////////////
 // Types of Events and Event Handlers
@@ -301,3 +389,21 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
 	if (el !== h1) el.style.transform = "scale(0.5)";
 });
+
+///////////////////////////////////////
+// Lifecycle DOM Events
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  console.log(e);
+  e.returnValue = '';
+});
+
+*/
