@@ -228,6 +228,7 @@ class CarCl {
 	brake() {
 		this.speed -= 10;
 		console.log(`'${this.make}' going at ${this.speed} km/h`);
+		return this;
 	}
 
 	get speedUS() {
@@ -311,3 +312,181 @@ console.log(tesla);
 tesla.chargeBattery(100);
 tesla.accelerate();
 tesla.brake();
+
+///////////////////////////////////////
+// Inheritance Between "Classes": ES6 Classes
+
+class StudentCl extends PersonCl {
+	constructor(fullName, birthYear, course) {
+		// Always needs to happen first
+		super(fullName, birthYear);
+		this.course = course;
+	}
+
+	introduce() {
+		console.log(`My name is ${this.fullName} and I study ${this.course}`);
+	}
+
+	calcAge() {
+		console.log(
+			`I'm ${
+				2037 - this.birthYear
+			} years old, but as a student I feel more like ${
+				2037 - this.birthYear + 10
+			}`
+		);
+	}
+}
+
+const martha = new StudentCl("Martha Jones", 2012, "Computer Science");
+martha.introduce();
+martha.calcAge();
+
+///////////////////////////////////////
+// Inheritance Between "Classes": Object.create
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+	PersonProto.init.call(this, firstName, birthYear);
+	this.course = course;
+};
+
+StudentProto.introduce = function () {
+	console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init("Jay", 2010, "Computer Science");
+jay.introduce();
+jay.calcAge();
+
+///////////////////////////////////////
+// Encapsulation: Protected Properties and Methods
+// Encapsulation: Private Class Fields and Methods
+
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+// (there is also the static version)
+
+class Account {
+	// 1) Public fields (instances)
+	locale = navigator.language;
+
+	// 2) Private fields
+	#movements = [];
+	#pin;
+
+	constructor(owner, currency, pin) {
+		this.owner = owner;
+		this.currency = currency;
+		this.#pin = pin;
+		// protected property
+		// this._movements = [];
+		// this.locale = navigator.language;
+
+		console.log(`Thanks for opening an account, ${owner}`);
+	}
+
+	// 3) Public methods
+
+	// Public interface
+	getMovements() {
+		return this.#movements;
+	}
+
+	deposit(val) {
+		this.#movements.push(val);
+		return this;
+	}
+
+	withdraw(val) {
+		this.deposit(-val);
+		return this;
+	}
+
+	requestLoan(val) {
+		if (this._approveLoan(val)) {
+			this.deposit(val);
+			console.log(`Loan approved`);
+			return this;
+		}
+	}
+
+	static helper() {
+		console.log("Helper");
+	}
+
+	// 4) Private methods
+	_approveLoan(val) {
+		return true;
+	}
+}
+
+const acc1 = new Account("Jonas", "EUR", 1111, []);
+
+// acc1.movements.push(250);
+// acc1.movements.push(-250);
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+// acc1.#approveLoan(1000);
+console.log("movements:", acc1.getMovements());
+
+console.log(acc1);
+
+// console.log(acc1.#movements);
+// console.log(acc1.#pin);
+
+Account.helper();
+
+// Chaining
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+
+///////////////////////////////////////
+// Coding Challenge #4
+
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+GOOD LUCK 😀
+*/
+
+class EVCl extends CarCl {
+	#charge;
+	constructor(make, speed, charge) {
+		super(make, speed);
+		this.#charge = charge;
+	}
+
+	chargeBattery(chargeTo) {
+		this.#charge = chargeTo;
+		console.log(`${this.make} is now charged at ${this.#charge}%`);
+		return this;
+	}
+
+	accelerate() {
+		this.speed += 20;
+		this.#charge--;
+		console.log(
+			`${this.make} going at ${this.speed} km/h, with a charge of ${
+				this.#charge
+			}%`
+		);
+		return this;
+	}
+}
+
+const ioniq = new EVCl("Ioniq 5", 130, 80);
+ioniq
+	.accelerate()
+	.accelerate()
+	.accelerate()
+	.brake()
+	.chargeBattery(50)
+	.accelerate();
