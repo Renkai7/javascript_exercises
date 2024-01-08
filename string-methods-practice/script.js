@@ -12,3 +12,10 @@ const stringAtIndex = function (str, i) {
 	return `Character at index ${i} is ${character}`;
 };
 console.log(stringAtIndex("Naruto", 4));
+
+// Exercise 3: Unicode Value of Character
+const characterUnicode = function (str, i) {
+	const unicode = str.charCodeAt(i);
+	return `Unicode value at index ${i}: ${unicode}`;
+};
+console.log(characterUnicode("Believe it!", 0));
