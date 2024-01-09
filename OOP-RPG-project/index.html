@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-Based RPG Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script defer src="game.js"></script>
+</head>
+
+<body>
+    <div class="bg-gray-800 min-h-screen text-white py-8 px-4">
+        <div class="container mx-auto">
+            <div class="bg-gray-600 p-4 rounded-lg mb-4">
+                <div id="game-info" class="text-lg font-bold mb-2">
+                    <!-- Display game information here (e.g., player stats, room description) -->
+                </div>
+                <div id="output" class="text-sm">
+                    <!-- Display game output here (e.g., messages, results) -->
+                </div>
+            </div>
+            <div class="bg-gray-600 p-4 rounded-lg">
+                <div id="user-input" class="flex">
+                    <input type="text" id="input-command" placeholder="Enter a command"
+                        class="flex-grow px-2 py-1 rounded-l-lg">
+                    <button id="submit-command"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-r-lg">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
