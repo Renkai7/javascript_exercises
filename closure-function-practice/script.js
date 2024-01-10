@@ -52,3 +52,73 @@ const enrollStudent = ninjaAcademy();
 enrollStudent("Naruto");
 enrollStudent("Sasuke");
 enrollStudent("Sakura");
+
+// Secret Jutsu
+const secretJutsu = function () {
+	const technique = "Multi Shadow Clone Jutsu";
+
+	return function () {
+		console.log(technique);
+	};
+};
+
+const revealSecretJutsu = secretJutsu();
+revealSecretJutsu();
+
+// Kunai Inventory
+const kunaiInventory = function () {
+	let kunaiCount = 0;
+
+	return {
+		addKunai: function (n) {
+			kunaiCount += n;
+			console.log(`Kunai count: ${kunaiCount}`);
+		},
+		removeKunai: function (n) {
+			kunaiCount -= n;
+			console.log(`Kunai count: ${kunaiCount}`);
+		},
+	};
+};
+
+const kunaiUpdate = kunaiInventory();
+kunaiUpdate.addKunai(100);
+kunaiUpdate.removeKunai(15);
+
+// Chakra Nature Training
+const chakraNatureTraining = function () {
+	let windTrainingProgress = 0;
+	let fireTrainingProgress = 0;
+
+	return {
+		windChakraTraining: function () {
+			windTrainingProgress += 10;
+			console.log(`Wind chakra training progress: ${windTrainingProgress}`);
+		},
+		fireChakraTraining: function () {
+			fireTrainingProgress += 10;
+			console.log(`Fire chakra training progress: ${fireTrainingProgress}`);
+		},
+	};
+};
+
+const trainCharkaNature = chakraNatureTraining();
+trainCharkaNature.windChakraTraining();
+trainCharkaNature.fireChakraTraining();
+trainCharkaNature.windChakraTraining();
+trainCharkaNature.fireChakraTraining();
+
+// Ninja Rank Examination
+const ninjaRankExam = function () {
+	const scores = [];
+
+	return function (score) {
+		scores.push(score);
+		console.log(`Scores: ${scores}`);
+	};
+};
+
+const addExamScore = ninjaRankExam();
+addExamScore(80);
+addExamScore(88);
+addExamScore(100);
