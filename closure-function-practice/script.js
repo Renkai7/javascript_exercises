@@ -122,3 +122,31 @@ const addExamScore = ninjaRankExam();
 addExamScore(80);
 addExamScore(88);
 addExamScore(100);
+
+// Summoning Jutsu
+const summoningJutsu = function () {
+	let summonedCreature = "snake";
+
+	return function () {
+		summonedCreature = "toad";
+		console.log(summonedCreature);
+	};
+};
+
+const summon = summoningJutsu();
+summon();
+
+// Sharingan Activation
+const sharinganActivation = function () {
+	let stateOfSharingan = "activated";
+
+	return function () {
+		stateOfSharingan =
+			stateOfSharingan === "activated" ? "deactivated" : "activated";
+		console.log(`Sharingan is ${stateOfSharingan}`);
+	};
+};
+
+const useSharingan = sharinganActivation();
+useSharingan();
+useSharingan();
