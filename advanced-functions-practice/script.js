@@ -146,3 +146,39 @@ const useSkillBook = function (skill, fn) {
 	return `You learned ${learnedSkill}!`;
 };
 console.log(useSkillBook("fireball", learnNewSkill));
+
+// Character Dialogue with .call()
+const speak = function (dialogue) {
+	console.log(`${this.name}: ${dialogue}`);
+};
+
+const haseo = {
+	name: "Haseo",
+};
+const alkaid = {
+	name: "Alkaid",
+};
+
+speak.call(haseo, "I'll save you no matter what.");
+speak.call(alkaid, "Thank you for everything.");
+
+// Party Stats with .apply()
+const displayStats = function (str, def) {
+	console.log(`${this.name} stats: Strength: (${str}) | Defense: (${def})`);
+};
+
+displayStats.apply(haseo, [50, 36]);
+
+// Guild event scheduling with .call()
+const guildEventInfo = {
+	eventName: "fun party dungeon exploration",
+	eventTime: "8pm",
+};
+const guild = {
+	name: "Canard",
+	scheduleEvent: function (event, time) {
+		console.log(`Guild event for ${this.name}: ${event} at ${time}`);
+	},
+};
+
+guild.scheduleEvent(guildEventInfo.eventName, guildEventInfo.eventTime);
